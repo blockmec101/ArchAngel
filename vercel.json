@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "env": {
+    "SOLANA_ENDPOINT": "@solana_endpoint",
+    "JUPITER_ENDPOINT": "@jupiter_endpoint",
+    "MONGODB_URI": "@mongodb_uri",
+    "ADMIN_USERNAME": "@admin_username",
+    "ADMIN_PASSWORD": "@admin_password",
+    "BIRDEYE_API_KEY": "@birdeye_api_key",
+    "TWITTER_API_KEY": "@twitter_api_key",
+    "TWITTER_API_SECRET": "@twitter_api_secret",
+    "TWITTER_BEARER_TOKEN": "@twitter_bearer_token"
+  }
+}
+

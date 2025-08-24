@@ -1,0 +1,49 @@
+type Swap @entity {
+  id: ID!
+  transactionHash: String!
+  blockNumber: BigInt!
+  blockTimestamp: String!
+  inputMint: String!
+  outputMint: String!
+  inputAmount: BigInt!
+  outputAmount: BigInt!
+  user: String!
+  route: Route!
+  feeAmount: BigInt!
+}
+
+type Pool @entity {
+  id: ID!
+  programId: String!
+  tokenAMint: Token!
+  tokenBMint: Token!
+  tokenAAmount: BigInt!
+  tokenBAmount: BigInt!
+  feeRate: BigDecimal!
+  creationTimestamp: String!
+  lastUpdateTimestamp: String!
+  swaps: [Swap!]! @derivedFrom(field: "pool")
+}
+
+type Token @entity {
+  id: ID!
+  symbol: String
+  name: String
+  decimals: Int!
+  totalVolume: BigInt!
+  priceUsd: BigDecimal
+  pools: [Pool!]! @derivedFrom(field: "tokenAMint")
+  poolsB: [Pool!]! @derivedFrom(field: "tokenBMint")
+}
+
+type Route @entity {
+  id: ID!
+  inputMint: Token!
+  outputMint: Token!
+  inAmount: BigInt!
+  outAmount: BigInt!
+  priceImpact: BigDecimal!
+  marketInfoAddress: String!
+  swaps: [Swap!]! @derivedFrom(field: "route")
+}
+

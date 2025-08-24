@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package jupiter.types.v1;
+
+message Swap {
+  string id = 1;
+  string transaction_hash = 2;
+  uint64 block_number = 3;
+  string block_timestamp = 4;
+  string input_mint = 5;
+  string output_mint = 6;
+  string input_amount = 7;
+  string output_amount = 8;
+  string user = 9;
+  string route = 10;
+  string fee_amount = 11;
+}
+
+message Pool {
+  string id = 1;
+  string program_id = 2;
+  string token_a_mint = 3;
+  string token_b_mint = 4;
+  string token_a_amount = 5;
+  string token_b_amount = 6;
+  string fee_rate = 7;
+  string creation_timestamp = 8;
+  string last_update_timestamp = 9;
+}
+
+message Token {
+  string mint = 1;
+  string symbol = 2;
+  string name = 3;
+  uint32 decimals = 4;
+  string total_volume = 5;
+  string price_usd = 6;
+}
+
+message Route {
+  string id = 1;
+  string input_mint = 2;
+  string output_mint = 3;
+  string in_amount = 4;
+  string out_amount = 5;
+  string price_impact = 6;
+  string market_info_address = 7;
+}
+

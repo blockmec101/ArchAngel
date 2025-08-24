@@ -1,0 +1,64 @@
+specVersion: v0.1.0
+package:
+  name: jupiter_dex
+  version: v0.1.0
+
+imports:
+  entity: https://github.com/streamingfast/substreams-entity-change/releases/download/v1.3.0/substreams-entity-change-v1.3.0.spkg
+  solana: https://github.com/streamingfast/substreams-solana/releases/download/v0.13.0/substreams-solana-v0.13.0.spkg
+
+protobuf:
+  files:
+    - jupiter.proto
+  importPaths:
+    - ./proto
+
+binaries:
+  default:
+    type: wasm/rust-v1
+    file: ./target/wasm32-unknown-unknown/release/substreams.wasm
+
+modules:
+  - name: map_swaps
+    kind: map
+    initialBlock: 0
+    inputs:
+      - source: sf.solana.type.v1.Block
+    output:
+      type: proto:jupiter.types.v1.Swap
+      
+  - name: map_pools
+    kind: map
+    initialBlock: 0
+    inputs:
+      - source: sf.solana.type.v1.Block
+    output:
+      type: proto:jupiter.types.v1.Pool
+      
+  - name: map_tokens
+    kind: map
+    initialBlock: 0
+    inputs:
+      - source: sf.solana.type.v1.Block
+    output:
+      type: proto:jupiter.types.v1.Token
+      
+  - name: map_routes
+    kind: map
+    initialBlock: 0
+    inputs:
+      - source: sf.solana.type.v1.Block
+    output:
+      type: proto:jupiter.types.v1.Route
+      
+  - name: graph_out
+    kind: map
+    initialBlock: 0
+    inputs:
+      - map: map_swaps
+      - map: map_pools
+      - map: map_tokens
+      - map: map_routes
+    output:
+      type: proto:substreams.entity.v1.EntityChanges
+
