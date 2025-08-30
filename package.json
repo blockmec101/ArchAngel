@@ -2,6 +2,22 @@
   "name": "my-v0-project",
   "version": "0.1.0",
   "private": true,
+  "description": "",
+  "homepage": "https://github.com/blockmec101/ArchAngel#readme",
+  "bugs": {
+    "url": "https://github.com/blockmec101/ArchAngel/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blockmec101/ArchAngel.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "akachukwu.js",
+  "directories": {
+    "lib": "lib"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
